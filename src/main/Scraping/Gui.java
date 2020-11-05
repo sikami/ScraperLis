@@ -5,11 +5,14 @@ import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Gui extends Application {
+    //class
+    private Search newSearch;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -38,11 +41,15 @@ public class Gui extends Application {
         //website url to scrape
         url.getItems().addAll("https://www.lombokfastboats.com/");
 
-
-        ComboBox routes = new ComboBox();
-
         // get routes
-        routes.getItems().add("Padang Bai to Gili Air");
+        ComboBox routes = new ComboBox();
+        String route1 = "Padang Bai";
+        String route2 = "Gili Air";
+        Label pbGa = new Label(route1 + " to " + route2);
+        pbGa.setTextFill(Color.BLACK);
+
+
+        routes.getItems().add(pbGa);
 
 
         Label urlLabel = new Label("URL: ");
@@ -77,12 +84,23 @@ public class Gui extends Application {
         //passenger amount
         Label passengerLabel = new Label("Passenger amount: ");
         ComboBox passList = new ComboBox();
-        passList.getItems().add("1");
+        Label passItem = new Label("1");
+        passItem.setTextFill(Color.BLACK);
+        passList.getItems().add(passItem);
 
         //currency
         Label currencyLabel = new Label("Currency");
         ComboBox currencyList = new ComboBox();
-        currencyList.getItems().add("IDR");
+        Label curr = new Label("IDR");
+        curr.setTextFill(Color.BLACK);
+        currencyList.getItems().add(curr);
+
+        //enter to Search clas need to improve later on to count on amount of letters and whether its all digit
+        if (returnLabel.getText().equals("")) {
+            enterToClass(urlLabel, route1, route2, departText, passItem, curr);
+        } else {
+            enterToClassReturn(urlLabel, route1, route2, departText, returnText, passItem, curr);
+        }
 
         //button to scrape
         Button searchButton = new Button("Scrape Now");
@@ -96,13 +114,17 @@ public class Gui extends Application {
         result.setDisable(true);
         layoutGeneral.setCenter(result);
 
-
         return layoutGeneral;
+    }
 
+    //if one way
+    private void enterToClass(Label urlLabel, String route1, String route2, TextField departDate, Label passenger, Label currency) {
+        this.newSearch = new Search(urlLabel.getText(), route1, route2, departDate.getText(), passenger.getText(), currency.getText());
+    }
 
+    //if return
 
-
-
-
+    private void enterToClassReturn(Label urlLabel, String route1, String route2, TextField departDate, TextField returnDate, Label passenger, Label currency) {
+        this.newSearch = new Search(urlLabel.getText(), route1, route2, departDate.getText(), returnDate.getText(), passenger.getText(), currency.getText());
     }
 }
