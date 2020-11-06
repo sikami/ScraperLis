@@ -9,29 +9,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Connection {
+public class ConnectionScraper {
 
     private Search search;
-    private ScrapeLombokFb lombokFb;
-    private List<FerrySchedule> results = new ArrayList<>();
+    private List<FerrySchedule> results;
+    private WebDriver webDriver;
 
+    public ConnectionScraper(Search search) {
+        this.search = search;
+        this.results = new ArrayList<>();
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("-headless");
+        this.webDriver = new FirefoxDriver(options);
+    }
 
     public List<FerrySchedule> connectLombokFb() {
         try {
-            FirefoxOptions options = new FirefoxOptions();
-            WebDriver webDriver = new FirefoxDriver();
-            options.addArguments("-headless");
-
+            LombokFbMethods lombokFbMethods = new LombokFbMethods();
+//
+//
+//            options.addArguments("-headless");
+//            WebDriver webDriver = new FirefoxDriver(options);
             //check if URL is lombok                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             options.addArguments("-headless");
-            webDriver.get(search.getUrl());
             webDriver.get(search.getUrl());
             search.setStatus("OK");
             webDriver.findElement(By.id("departure_region_id"));
             Select depRegion = new Select(webDriver.findElement(By.id("departure_region_id")));
-            depRegion.selectByValue(this.lombokFb.findValueLombokFb(search.getFrom()));
+            depRegion.selectByValue(lombokFbMethods.findValueLombokFb(search.getFrom()));
             webDriver.findElement(By.id("arrival_region_id"));
             Select arrivalRegion = new Select(webDriver.findElement(By.id("arrival_region_id")));
-            arrivalRegion.selectByValue(this.lombokFb.findValueLombokFb(search.getTo()));
+            arrivalRegion.selectByValue(lombokFbMethods.findValueLombokFb(search.getTo()));
 
             //setting departure date
             webDriver.findElement(By.id("departure_date"));
@@ -40,7 +47,7 @@ public class Connection {
             dateDeparture.sendKeys(search.getDepDate());
 
             //if return date is not put, then its one way
-            if (!search.getReturnDate().equals("none")) {
+            if (!search.getReturnDate().equals("")) {
                 webDriver.findElement(By.id("departure_date"));
                 WebElement dateReturn = webDriver.findElement(By.id("return_date"));
                 dateReturn.clear();
@@ -57,7 +64,7 @@ public class Connection {
             //clicking currency
             webDriver.findElement(By.id("currency_id"));
             Select curr = new Select(webDriver.findElement(By.id("currency_id")));
-            curr.selectByValue(this.lombokFb.findCurrencyLombokFb(search.getCurrency()));
+            curr.selectByValue(lombokFbMethods.findCurrencyLombokFb(search.getCurrency()));
 
             //clicking search button
             webDriver.findElement(By.className("search-button")).click();
@@ -70,13 +77,13 @@ public class Connection {
             List<WebElement> route = webDriver.findElements(By.className("route"));
 
             this.results = putIntoClass(boatTitle, price, time, route);
-            webDriver.close();
-            return results;
+            return this.results;
+//            printResult(this.results);
+//            webDriver.close();
 
         } catch (Exception e) {
             System.out.println("Failed to fetch url for Lombok Fast Boat");
         }
-
         return null;
     }
 
@@ -93,9 +100,64 @@ public class Connection {
         return ferrySchedules;
     }
 
-    public void printResult(List<FerrySchedule> ferrySchedules) {
+    public String printResult(List<FerrySchedule> ferrySchedules) {
+        StringBuilder sb = new StringBuilder();
         for (FerrySchedule ferrySchedule : ferrySchedules) {
-            System.out.println(ferrySchedule);
+            sb.append(ferrySchedule);
         }
+        return sb.toString();
     }
+
+    public void closeWebDriver() {
+        this.webDriver.close();
+    }
+
+
+
+
+//    public static String findValueLombokFb(String departure) {
+//        switch (departure) {
+//            case "Nusa Ceningan":
+//                return "8";
+//            case "Nusa Penida":
+//                return "7";
+//            case "Gili Meno":
+//                return "6";
+//            case "Nusa Lembongan":
+//                return "5";
+//            case "Lombok":
+//                return "4";
+//            case "Bali" :
+//            case "Padang Bai":
+//                return "3";
+//            case "Gili Air":
+//                return "2";
+//            case "Gili Trawangan":
+//                return "1";
+//        }
+//        return null;
+//    }
+
+//    public String findCurrencyLombokFb(String currency) {
+//        if (currency.contains("CHF")) {
+//            return "10";
+//        } else if (currency.contains("AUD")) {
+//            return "9";
+//        } else if (currency.contains("CAD")) {
+//            return "8";
+//        } else if (currency.contains("EUR")) {
+//            return "7";
+//        } else if (currency.contains("JPY")) {
+//            return "5";
+//        } else if (currency.contains("USD")) {
+//            return "4";
+//        } else if (currency.contains("GBP")) {
+//            return "3";
+//        } else if (currency.contains("SGD")) {
+//            return "2";
+//        } else if (currency.contains("IDR")) {
+//            return "1";
+//        }
+//        return null;
+//    }
 }

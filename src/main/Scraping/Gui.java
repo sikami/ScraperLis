@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -9,10 +11,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.checkerframework.checker.units.qual.C;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Gui extends Application {
     //class
-    private Search newSearch;
+    private Search newSearch = new Search();
+
+//    public Gui(Search newSearch) {
+//        this.newSearch = newSearch;
+//    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -37,11 +47,13 @@ public class Gui extends Application {
         hBox1.setSpacing(30);
 
         ComboBox url = new ComboBox();
+        url.getItems().add("https://www.lombokfastboats.com/");
+
 
         //website url to scrape
-        url.getItems().addAll("https://www.lombokfastboats.com/");
+        url.getItems().addAll();
 
-        // get routes
+        // get routes -->NEEDS TO MAKE IT TIDY
         ComboBox routes = new ComboBox();
         String route1 = "Padang Bai";
         String route2 = "Gili Air";
@@ -67,11 +79,11 @@ public class Gui extends Application {
         vBox.setPadding(new Insets(20,20,20,20));
 
         //departure date text
-        Label departLabel = new Label("Departure date (yyyy mm dd): ");
+        Label departLabel = new Label("Departure date (yyyy-mm-dd): ");
         TextField departText = new TextField();
 
         //return date text
-        Label returnLabel = new Label("Return date (if any) (yyyy mm dd): ");
+        Label returnLabel = new Label("Return date (if any) (yyyy-mm-dd): ");
         TextField returnText = new TextField();
 
         hBox2.getChildren().addAll(departLabel, departText, returnLabel, returnText);
@@ -84,26 +96,22 @@ public class Gui extends Application {
         //passenger amount
         Label passengerLabel = new Label("Passenger amount: ");
         ComboBox passList = new ComboBox();
-        Label passItem = new Label("1");
-        passItem.setTextFill(Color.BLACK);
-        passList.getItems().add(passItem);
+        passList.getItems().add("1");
+
 
         //currency
         Label currencyLabel = new Label("Currency");
         ComboBox currencyList = new ComboBox();
-        Label curr = new Label("IDR");
-        curr.setTextFill(Color.BLACK);
-        currencyList.getItems().add(curr);
+        currencyList.getItems().add("IDR");
 
-        //enter to Search clas need to improve later on to count on amount of letters and whether its all digit
-        if (returnLabel.getText().equals("")) {
-            enterToClass(urlLabel, route1, route2, departText, passItem, curr);
-        } else {
-            enterToClassReturn(urlLabel, route1, route2, departText, returnText, passItem, curr);
-        }
+
+
 
         //button to scrape
         Button searchButton = new Button("Scrape Now");
+
+
+
 
         hBox3.getChildren().addAll(passengerLabel, passList, currencyLabel, currencyList);
         vBox.getChildren().addAll(title, hBox1, hBox2,hBox3, searchButton);
@@ -111,20 +119,64 @@ public class Gui extends Application {
 
         //result display
         TextArea result = new TextArea("Result will be shown here");
-        result.setDisable(true);
         layoutGeneral.setCenter(result);
+
+        //add event listener for result to appear on display
+        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+                List<FerrySchedule> ferryScheduleList;
+                if (url.getValue().equals("https://www.lombokfastboats.com/")) {
+
+                    //enter to Search class need to improve later on to count on amount of letters and whether its all digit
+                    if (returnLabel.getText().equals("")) {
+                        String urlValue = (String) url.getValue();
+                        String depart = departText.getText();
+                        String passengerValue = (String) passList.getValue();
+                        String currencyValue = (String) currencyList.getValue();
+                        enterToClass(urlValue, route1, route2, depart, passengerValue, currencyValue);
+                    } else {
+                        String urlValue = (String) url.getValue();
+                        String depart = departText.getText();
+                        String returnDates = returnText.getText();
+                        String passengerValue = (String) passList.getValue();
+                        String currencyValue = (String) currencyList.getValue();
+                        enterToClassReturn(urlValue, route1, route2, depart, returnDates, passengerValue, currencyValue);
+                    }
+
+                    ConnectionScraper connectionScraper = new ConnectionScraper(newSearch);
+                    ferryScheduleList = connectionScraper.connectLombokFb();
+                    result.setText(connectionScraper.printResult(ferryScheduleList));
+                    connectionScraper.closeWebDriver();
+                }
+            }
+        });
 
         return layoutGeneral;
     }
 
     //if one way
-    private void enterToClass(Label urlLabel, String route1, String route2, TextField departDate, Label passenger, Label currency) {
-        this.newSearch = new Search(urlLabel.getText(), route1, route2, departDate.getText(), passenger.getText(), currency.getText());
+    private void enterToClass(String urlLabel, String route1, String route2, String departDate, String passenger, String currency) {
+        newSearch.setUrl(urlLabel);
+        newSearch.setFrom(route1);
+        newSearch.setTo(route2);
+        newSearch.setDepDate(departDate);
+        newSearch.setPassenger(passenger);
+        newSearch.setCurrency(currency);
     }
 
     //if return
 
-    private void enterToClassReturn(Label urlLabel, String route1, String route2, TextField departDate, TextField returnDate, Label passenger, Label currency) {
-        this.newSearch = new Search(urlLabel.getText(), route1, route2, departDate.getText(), returnDate.getText(), passenger.getText(), currency.getText());
+    private void enterToClassReturn(String urlLabel, String route1, String route2, String departDate, String returnDate, String passenger, String currency) {
+        newSearch.setUrl(urlLabel);
+        newSearch.setFrom(route1);
+        newSearch.setTo(route2);
+        newSearch.setDepDate(departDate);
+        newSearch.setReturnDate(returnDate);
+        newSearch.setPassenger(passenger);
+        newSearch.setCurrency(currency);
     }
+
+
 }

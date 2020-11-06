@@ -1,15 +1,10 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
-import java.util.List;
+public class LombokFbMethods {
 
-public class ScrapeLombokFb {
+    public LombokFbMethods() {
+    }
 
-    public String findValueLombokFb(String departure) {
+    public static String findValueLombokFb(String departure) {
         switch (departure) {
             case "Nusa Ceningan":
                 return "8";
@@ -22,6 +17,7 @@ public class ScrapeLombokFb {
             case "Lombok":
                 return "4";
             case "Bali" :
+              case "Padang Bai":
                 return "3";
             case "Gili Air":
                 return "2";
@@ -56,3 +52,4 @@ public class ScrapeLombokFb {
 
 
 }
+

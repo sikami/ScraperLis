@@ -21,7 +21,6 @@ public class Search {
     private String passenger;
     private String currency;
     private String status;
-    private WebDriver webDriver;
 
 
     public Search() {
@@ -36,7 +35,6 @@ public class Search {
         this.passenger = passenger;
         this.currency = currency;
         this.status = "";
-        this.webDriver = new FirefoxDriver();
 
     }
 
@@ -49,11 +47,38 @@ public class Search {
         this.currency = currency;
         this.status = "";
         this.returnDate = "none";
-        this.webDriver = new FirefoxDriver();
     }
 
     public String getUrl() {
         return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public void setDepDate(String depDate) {
+        this.depDate = depDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public void setPassenger(String passenger) {
+        this.passenger = passenger;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public void setStatus(String status) {
@@ -163,14 +188,6 @@ public class Search {
 
     public String getCurrency() {
         return currency;
-    }
-
-    public WebDriver getWebDriver() {
-        return webDriver;
-    }
-
-    public void close(WebDriver driver) {
-        driver.close();
     }
 
 
