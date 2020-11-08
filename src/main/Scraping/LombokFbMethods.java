@@ -50,14 +50,25 @@ public class LombokFbMethods {
         return null;
     }
 
-    public static String routeFrom(String from) {
-        String[] routes = from.split(" to ");
+    public static RoutesToFrom routeFrom(String from) {
+        RoutesToFrom routesToFrom = new RoutesToFrom();
+        routesToFrom.setFrom("Bali");
 
-        switch (from) {
+       if (from.contains("Gili Air")) {
+           routesToFrom.setTo("Gili Air");
+       } else if (from.contains("Nusa Ceningan")) {
+           routesToFrom.setTo("Nusa Ceningan");
+       } else if (from.contains("Gili Meno")) {
+           routesToFrom.setTo("Gili Meno");
+       } else if (from.contains("Nusa Lembongan")) {
+           routesToFrom.setTo("Nusa Lembongan");
+       } else if (from.contains("Lombok")) {
+           routesToFrom.setTo("Lombok");
+       } else if (from.contains("Gili Trawangan")) {
+           routesToFrom.setTo("Gili Trawangan");
+       }
 
-        }
-        String fromRoute = routes[0];
-
+       return routesToFrom;
     }
 
 
