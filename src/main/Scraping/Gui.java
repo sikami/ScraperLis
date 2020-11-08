@@ -20,10 +20,6 @@ public class Gui extends Application {
     //class
     private Search newSearch = new Search();
 
-//    public Gui(Search newSearch) {
-//        this.newSearch = newSearch;
-//    }
-
     @Override
     public void start(Stage stage) throws Exception {
 
