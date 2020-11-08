@@ -59,22 +59,28 @@ public class Gui extends Application {
         String route6 = "Nusa Lembongan";
         String route7 = "Lombok";
         String route8 = "Gili Trawangan";
-        Label pbGa = new Label(route1 + " to " + route2);
-        Label pbNc = new Label(route1 + " to " + route3);
-        Label pbNp = new Label(route1 + " to " + route4);
-        Label pbGm = new Label(route1 + " to " + route5);
-        Label pbNl = new Label(route1 + " to " + route6);
-        Label pbL = new Label(route1 + " to " + route7);
-        Label pbGt = new Label(route1 + " to " + route8);
-        pbGa.setTextFill(Color.BLACK);
-        pbNc.setTextFill(Color.BLACK);
-        pbNp.setTextFill(Color.BLACK);
-        pbGm.setTextFill(Color.BLACK);
-        pbNl.setTextFill(Color.BLACK);
-        pbL.setTextFill(Color.BLACK);
-        pbGt.setTextFill(Color.BLACK);
+//        Label pbGa = new Label(route1 + " to " + route2);
+//        Label pbNc = new Label(route1 + " to " + route3);
+//        Label pbNp = new Label(route1 + " to " + route4);
+//        Label pbGm = new Label(route1 + " to " + route5);
+//        Label pbNl = new Label(route1 + " to " + route6);
+//        Label pbL = new Label(route1 + " to " + route7);
+//        Label pbGt = new Label(route1 + " to " + route8);
+//        pbGa.setTextFill(Color.BLACK);
+//        pbNc.setTextFill(Color.BLACK);
+//        pbNp.setTextFill(Color.BLACK);
+//        pbGm.setTextFill(Color.BLACK);
+//        pbNl.setTextFill(Color.BLACK);
+//        pbL.setTextFill(Color.BLACK);
+//        pbGt.setTextFill(Color.BLACK);
 
-        routes.getItems().addAll(pbGa, pbNc, pbNp, pbGm, pbNl, pbL, pbGt);
+        routes.getItems().addAll(route1 + " to " + route2,
+                route1 + " to " + route3,
+                route1 + " to " + route4,
+                route1 + " to " + route5,
+                route1 + " to " + route6,
+                route1 + " to " + route7,
+                route1 + " to " + route8);
 
 
 
@@ -193,6 +199,8 @@ public class Gui extends Application {
         newSearch.setPassenger(passenger);
         newSearch.setCurrency(currency);
     }
+
+
 
 
 }

@@ -50,6 +50,16 @@ public class LombokFbMethods {
         return null;
     }
 
+    public static String routeFrom(String from) {
+        String[] routes = from.split(" to ");
+
+        switch (from) {
+
+        }
+        String fromRoute = routes[0];
+
+    }
+
 
 }
 
