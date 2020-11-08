@@ -1,27 +1,35 @@
 
 public class LombokFbMethods {
+    private static final String NC = "Nusa Ceningan";
+    private static final String NP = "Nusa Penida";
+    private static final String GM = "Gili Meno";
+    private static final String NL = "Nusa Lembongan";
+    private static final String BL = "Bali";
+    private static final String LM = "Lombok";
+    private static final String GA = "Gili Air";
+    private static final String GT = "Gili Trawangan";
 
     public LombokFbMethods() {
     }
 
     public static String findValueLombokFb(String departure) {
         switch (departure) {
-            case "Nusa Ceningan":
+            case NC:
                 return "8";
-            case "Nusa Penida":
+            case NP:
                 return "7";
-            case "Gili Meno":
+            case GM:
                 return "6";
-            case "Nusa Lembongan":
+            case NL:
                 return "5";
-            case "Lombok":
+            case LM:
                 return "4";
-            case "Bali" :
+            case BL :
               case "Padang Bai":
                 return "3";
-            case "Gili Air":
+            case GA:
                 return "2";
-            case "Gili Trawangan":
+            case GT:
                 return "1";
         }
         return null;
@@ -52,20 +60,20 @@ public class LombokFbMethods {
 
     public static RoutesToFrom routeFrom(String from) {
         RoutesToFrom routesToFrom = new RoutesToFrom();
-        routesToFrom.setFrom("Bali");
+        routesToFrom.setFrom(BL);
 
-       if (from.contains("Gili Air")) {
-           routesToFrom.setTo("Gili Air");
-       } else if (from.contains("Nusa Ceningan")) {
-           routesToFrom.setTo("Nusa Ceningan");
-       } else if (from.contains("Gili Meno")) {
-           routesToFrom.setTo("Gili Meno");
-       } else if (from.contains("Nusa Lembongan")) {
-           routesToFrom.setTo("Nusa Lembongan");
-       } else if (from.contains("Lombok")) {
-           routesToFrom.setTo("Lombok");
-       } else if (from.contains("Gili Trawangan")) {
-           routesToFrom.setTo("Gili Trawangan");
+       if (from.contains(GA)) {
+           routesToFrom.setTo(GA);
+       } else if (from.contains(NC)) {
+           routesToFrom.setTo(NC);
+       } else if (from.contains(GM)) {
+           routesToFrom.setTo(GM);
+       } else if (from.contains(NL) {
+           routesToFrom.setTo(NL);
+       } else if (from.contains(LM)) {
+           routesToFrom.setTo(LM);
+       } else if (from.contains(GT)) {
+           routesToFrom.setTo(GT);
        }
 
        return routesToFrom;
