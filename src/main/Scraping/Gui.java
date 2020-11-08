@@ -71,9 +71,15 @@ public class Gui extends Application {
         Label pbL = new Label(route1 + " to " + route7);
         Label pbGt = new Label(route1 + " to " + route8);
         pbGa.setTextFill(Color.BLACK);
-
+        pbNc.setTextFill(Color.BLACK);
+        pbNp.setTextFill(Color.BLACK);
+        pbGm.setTextFill(Color.BLACK);
+        pbNl.setTextFill(Color.BLACK);
+        pbL.setTextFill(Color.BLACK);
+        pbGt.setTextFill(Color.BLACK);
 
         routes.getItems().addAll(pbGa, pbNc, pbNp, pbGm, pbNl, pbL, pbGt);
+
 
 
         Label urlLabel = new Label("URL: ");
@@ -147,6 +153,7 @@ public class Gui extends Application {
                         String depart = departText.getText();
                         String passengerValue = (String) passList.getValue();
                         String currencyValue = (String) currencyList.getValue();
+
                         enterToClass(urlValue, route1, route2, depart, passengerValue, currencyValue);
                     } else {
                         String urlValue = (String) url.getValue();
@@ -154,6 +161,7 @@ public class Gui extends Application {
                         String returnDates = returnText.getText();
                         String passengerValue = (String) passList.getValue();
                         String currencyValue = (String) currencyList.getValue();
+
                         enterToClassReturn(urlValue, route1, route2, depart, returnDates, passengerValue, currencyValue);
                     }
 

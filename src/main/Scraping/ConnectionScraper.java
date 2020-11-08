@@ -68,7 +68,7 @@ public class ConnectionScraper {
 
             //clicking search button
             webDriver.findElement(By.className("search-button")).click();
-            webDriver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+            webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
             //scrape content into list
             List<WebElement> price = webDriver.findElements(By.className("price"));
