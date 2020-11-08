@@ -68,7 +68,7 @@ public class LombokFbMethods {
            routesToFrom.setTo(NC);
        } else if (from.contains(GM)) {
            routesToFrom.setTo(GM);
-       } else if (from.contains(NL) {
+       } else if (from.contains(NL)) {
            routesToFrom.setTo(NL);
        } else if (from.contains(LM)) {
            routesToFrom.setTo(LM);
