@@ -55,13 +55,25 @@ public class Gui extends Application {
 
         // get routes -->NEEDS TO MAKE IT TIDY
         ComboBox routes = new ComboBox();
-        String route1 = "Padang Bai";
+        String route1 = "Bali";
         String route2 = "Gili Air";
+        String route3 = "Nusa Ceningan";
+        String route4 = "Nusa Penida";
+        String route5 = "Gili Meno";
+        String route6 = "Nusa Lembongan";
+        String route7 = "Lombok";
+        String route8 = "Gili Trawangan";
         Label pbGa = new Label(route1 + " to " + route2);
+        Label pbNc = new Label(route1 + " to " + route3);
+        Label pbNp = new Label(route1 + " to " + route4);
+        Label pbGm = new Label(route1 + " to " + route5);
+        Label pbNl = new Label(route1 + " to " + route6);
+        Label pbL = new Label(route1 + " to " + route7);
+        Label pbGt = new Label(route1 + " to " + route8);
         pbGa.setTextFill(Color.BLACK);
 
 
-        routes.getItems().add(pbGa);
+        routes.getItems().addAll(pbGa, pbNc, pbNp, pbGm, pbNl, pbL, pbGt);
 
 
         Label urlLabel = new Label("URL: ");
