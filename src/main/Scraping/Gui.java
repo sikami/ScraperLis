@@ -127,24 +127,23 @@ public class Gui extends Application {
             public void handle(ActionEvent actionEvent) {
 
                 List<FerrySchedule> ferryScheduleList;
+                String routeTo = GeneralMethods.checkRoute((String) routes.getValue());
+                String passengerValue = (String) passList.getValue();
+                String currencyValue = (String) currencyList.getValue();
                 if (url.getValue().equals("https://www.lombokfastboats.com/")) {
 
                     //enter to Search class need to improve later on to count on amount of letters and whether its all digit
                     if (returnLabel.getText().equals("")) {
                         String urlValue = (String) url.getValue();
                         String depart = departText.getText();
-                        String passengerValue = (String) passList.getValue();
-                        String currencyValue = (String) currencyList.getValue();
 
-                        enterToClass(urlValue, route1, route2, depart, passengerValue, currencyValue);
+                        enterToClass(urlValue, route1, routeTo, depart, passengerValue, currencyValue);
                     } else {
                         String urlValue = (String) url.getValue();
                         String depart = departText.getText();
                         String returnDates = returnText.getText();
-                        String passengerValue = (String) passList.getValue();
-                        String currencyValue = (String) currencyList.getValue();
 
-                        enterToClassReturn(urlValue, route1, route2, depart, returnDates, passengerValue, currencyValue);
+                        enterToClassReturn(urlValue, route1, routeTo, depart, returnDates, passengerValue, currencyValue);
                     }
 
                     ConnectionScraper connectionScraper = new ConnectionScraper(newSearch);
