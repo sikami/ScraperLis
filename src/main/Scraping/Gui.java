@@ -97,7 +97,7 @@ public class Gui extends Application {
         //currency
         Label currencyLabel = new Label("Currency");
         ComboBox currencyList = new ComboBox();
-        currencyList.getItems().add("IDR");
+        currencyList.getItems().addAll("IDR", "EUR", "GBP");
 
 
 
