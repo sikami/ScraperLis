@@ -3,17 +3,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.checkerframework.checker.units.qual.C;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Gui extends Application {
@@ -51,8 +46,8 @@ public class Gui extends Application {
 
         // get routes -->NEEDS TO MAKE IT TIDY
         ComboBox routes = new ComboBox();
-        String route1 = "Bali";
-        String route2 = "Gili Air";
+        String mainlandRoute = RoutesConstant.BL.getRoutes();
+
 
         routes.getItems().addAll(RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.GA.getRoutes(),
                 RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.NC.getRoutes(),
@@ -130,20 +125,17 @@ public class Gui extends Application {
                 String routeTo = GeneralMethods.checkRoute((String) routes.getValue());
                 String passengerValue = (String) passList.getValue();
                 String currencyValue = (String) currencyList.getValue();
+                String urlValue = (String) url.getValue();
+                String depart = departText.getText();
+
                 if (url.getValue().equals("https://www.lombokfastboats.com/")) {
 
                     //enter to Search class need to improve later on to count on amount of letters and whether its all digit
                     if (returnLabel.getText().equals("")) {
-                        String urlValue = (String) url.getValue();
-                        String depart = departText.getText();
-
-                        enterToClass(urlValue, route1, routeTo, depart, passengerValue, currencyValue);
+                        enterToClass(urlValue, mainlandRoute, routeTo, depart, passengerValue, currencyValue);
                     } else {
-                        String urlValue = (String) url.getValue();
-                        String depart = departText.getText();
                         String returnDates = returnText.getText();
-
-                        enterToClassReturn(urlValue, route1, routeTo, depart, returnDates, passengerValue, currencyValue);
+                        enterToClassReturn(urlValue, mainlandRoute, routeTo, depart, returnDates, passengerValue, currencyValue);
                     }
 
                     ConnectionScraper connectionScraper = new ConnectionScraper(newSearch);
