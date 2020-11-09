@@ -26,10 +26,7 @@ public class ConnectionScraper {
     public List<FerrySchedule> connectLombokFb() {
         try {
             GeneralMethods generalMethods = new GeneralMethods();
-//
-//
-//            options.addArguments("-headless");
-//            WebDriver webDriver = new FirefoxDriver(options);
+
             //check if URL is lombok                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             options.addArguments("-headless");
             webDriver.get(search.getUrl());
             search.setStatus("OK");
@@ -88,6 +85,31 @@ public class ConnectionScraper {
         }
         return null;
     }
+
+    public List<FerrySchedule> connectToGiliTrf() {
+
+
+
+
+
+        return null;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
