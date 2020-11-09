@@ -1,39 +1,34 @@
+import okhttp3.Route;
 
 public class LombokFbMethods {
-    private static final String NC = "Nusa Ceningan";
-    private static final String NP = "Nusa Penida";
-    private static final String GM = "Gili Meno";
-    private static final String NL = "Nusa Lembongan";
-    private static final String BL = "Bali";
-    private static final String LM = "Lombok";
-    private static final String GA = "Gili Air";
-    private static final String GT = "Gili Trawangan";
 
     public LombokFbMethods() {
     }
 
     public static String findValueLombokFb(String departure) {
-        switch (departure) {
-            case NC:
-                return "8";
-            case NP:
-                return "7";
-            case GM:
-                return "6";
-            case NL:
-                return "5";
-            case LM:
-                return "4";
-            case BL :
-              case "Padang Bai":
-                return "3";
-            case GA:
-                return "2";
-            case GT:
-                return "1";
+
+        if (departure.equals(RoutesConstant.NC.getRoutes())) {
+            return RoutesConstant.NC.getRoutes();
+        } else if (departure.equals(RoutesConstant.NP.getRoutes())) {
+            return RoutesConstant.NP.getRoutes();
+        } else if (departure.equals(RoutesConstant.GM.getRoutes())) {
+            return RoutesConstant.GM.getRoutes();
+        } else if (departure.equals(RoutesConstant.NL.getRoutes())) {
+            return RoutesConstant.NL.getRoutes();
+        } else if (departure.equals(RoutesConstant.LM.getRoutes())) {
+            return RoutesConstant.LM.getRoutes();
+        } else if (departure.equals(RoutesConstant.BL.getRoutes())) {
+            return RoutesConstant.BL.getRoutes();
+        } else if (departure.equals(RoutesConstant.GA.getRoutes())) {
+            return RoutesConstant.GA.getRoutes();
+        } else if (departure.equals(RoutesConstant.GT.getRoutes())) {
+            return RoutesConstant.GT.getRoutes();
         }
+
         return null;
+
     }
+
 
     public String findCurrencyLombokFb(String currency) {
         if (currency.contains("CHF")) {
