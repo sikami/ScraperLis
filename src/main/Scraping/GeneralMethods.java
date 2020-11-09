@@ -8,21 +8,21 @@ public class GeneralMethods {
     public static String findValueLombokFb(String departure) {
 
         if (departure.equals(RoutesConstant.NC.getRoutes())) {
-            return RoutesConstant.NC.getRoutes();
+            return "8";
         } else if (departure.equals(RoutesConstant.NP.getRoutes())) {
-            return RoutesConstant.NP.getRoutes();
+            return "7";
         } else if (departure.equals(RoutesConstant.GM.getRoutes())) {
-            return RoutesConstant.GM.getRoutes();
+            return "6";
         } else if (departure.equals(RoutesConstant.NL.getRoutes())) {
-            return RoutesConstant.NL.getRoutes();
+            return "5";
         } else if (departure.equals(RoutesConstant.LM.getRoutes())) {
-            return RoutesConstant.LM.getRoutes();
+            return "4";
         } else if (departure.equals(RoutesConstant.BL.getRoutes())) {
-            return RoutesConstant.BL.getRoutes();
+            return "3";
         } else if (departure.equals(RoutesConstant.GA.getRoutes())) {
-            return RoutesConstant.GA.getRoutes();
+            return "2";
         } else if (departure.equals(RoutesConstant.GT.getRoutes())) {
-            return RoutesConstant.GT.getRoutes();
+            return "1";
         }
 
         return null;

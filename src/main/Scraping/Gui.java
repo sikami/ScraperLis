@@ -131,7 +131,7 @@ public class Gui extends Application {
                 if (url.getValue().equals("https://www.lombokfastboats.com/")) {
 
                     //enter to Search class need to improve later on to count on amount of letters and whether its all digit
-                    if (returnLabel.getText().equals("")) {
+                    if (returnText.getText().equals("")) {
                         enterToClass(urlValue, mainlandRoute, routeTo, depart, passengerValue, currencyValue);
                     } else {
                         String returnDates = returnText.getText();
