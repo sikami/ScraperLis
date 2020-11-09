@@ -35,6 +35,8 @@ public class ConnectionScraper {
             search.setStatus("OK");
             webDriver.findElement(By.id("departure_region_id"));
             Select depRegion = new Select(webDriver.findElement(By.id("departure_region_id")));
+            String test = generalMethods.findValueLombokFb(search.getFrom());
+
             depRegion.selectByValue(generalMethods.findValueLombokFb(search.getFrom()));
             webDriver.findElement(By.id("arrival_region_id"));
             Select arrivalRegion = new Select(webDriver.findElement(By.id("arrival_region_id")));
@@ -47,7 +49,7 @@ public class ConnectionScraper {
             dateDeparture.sendKeys(search.getDepDate());
 
             //if return date is not put, then its one way
-            if (!search.getReturnDate().equals("")) {
+            if (search.getReturnDate() != null) {
                 webDriver.findElement(By.id("departure_date"));
                 WebElement dateReturn = webDriver.findElement(By.id("return_date"));
                 dateReturn.clear();

@@ -43,6 +43,7 @@ public class Search {
         this.from = from;
         this.to = to;
         this.depDate = depDate;
+        this.returnDate = "";
         this.passenger = passenger;
         this.currency = currency;
         this.status = "";
