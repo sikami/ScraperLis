@@ -53,26 +53,27 @@ public class GeneralMethods {
         return null;
     }
 
-    public static RoutesToFrom routeFrom(String from) {
-        RoutesToFrom routesToFrom = new RoutesToFrom();
-        routesToFrom.setFrom(BL);
-
-       if (from.contains(GA)) {
-           routesToFrom.setTo(GA);
-       } else if (from.contains(NC)) {
-           routesToFrom.setTo(NC);
-       } else if (from.contains(GM)) {
-           routesToFrom.setTo(GM);
-       } else if (from.contains(NL)) {
-           routesToFrom.setTo(NL);
-       } else if (from.contains(LM)) {
-           routesToFrom.setTo(LM);
-       } else if (from.contains(GT)) {
-           routesToFrom.setTo(GT);
-       }
-
-       return routesToFrom;
-    }
+    public static String routesTo(String)
+//    public static RoutesToFrom routeFrom(String from) {
+//        RoutesToFrom routesToFrom = new RoutesToFrom();
+//        routesToFrom.setFrom(BL);
+//
+//       if (from.contains(GA)) {
+//           routesToFrom.setTo(GA);
+//       } else if (from.contains(NC)) {
+//           routesToFrom.setTo(NC);
+//       } else if (from.contains(GM)) {
+//           routesToFrom.setTo(GM);
+//       } else if (from.contains(NL)) {
+//           routesToFrom.setTo(NL);
+//       } else if (from.contains(LM)) {
+//           routesToFrom.setTo(LM);
+//       } else if (from.contains(GT)) {
+//           routesToFrom.setTo(GT);
+//       }
+//
+//       return routesToFrom;
+//    }
 
 
 }

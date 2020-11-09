@@ -53,34 +53,14 @@ public class Gui extends Application {
         ComboBox routes = new ComboBox();
         String route1 = "Bali";
         String route2 = "Gili Air";
-        String route3 = "Nusa Ceningan";
-        String route4 = "Nusa Penida";
-        String route5 = "Gili Meno";
-        String route6 = "Nusa Lembongan";
-        String route7 = "Lombok";
-        String route8 = "Gili Trawangan";
-//        Label pbGa = new Label(route1 + " to " + route2);
-//        Label pbNc = new Label(route1 + " to " + route3);
-//        Label pbNp = new Label(route1 + " to " + route4);
-//        Label pbGm = new Label(route1 + " to " + route5);
-//        Label pbNl = new Label(route1 + " to " + route6);
-//        Label pbL = new Label(route1 + " to " + route7);
-//        Label pbGt = new Label(route1 + " to " + route8);
-//        pbGa.setTextFill(Color.BLACK);
-//        pbNc.setTextFill(Color.BLACK);
-//        pbNp.setTextFill(Color.BLACK);
-//        pbGm.setTextFill(Color.BLACK);
-//        pbNl.setTextFill(Color.BLACK);
-//        pbL.setTextFill(Color.BLACK);
-//        pbGt.setTextFill(Color.BLACK);
 
-        routes.getItems().addAll(route1 + " to " + route2,
-                route1 + " to " + route3,
-                route1 + " to " + route4,
-                route1 + " to " + route5,
-                route1 + " to " + route6,
-                route1 + " to " + route7,
-                route1 + " to " + route8);
+        routes.getItems().addAll(RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.GA.getRoutes(),
+                RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.NC.getRoutes(),
+                RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.NP.getRoutes(),
+                RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.GM.getRoutes(),
+                RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.NL.getRoutes(),
+                RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.LM.getRoutes(),
+                RoutesConstant.BL.getRoutes() + " to " + RoutesConstant.GT.getRoutes());
 
 
 
