@@ -64,8 +64,6 @@ public class GeneralMethods {
             return RoutesConstant.NL.getRoutes();
         } else if (route.contains(RoutesConstant.LM.getRoutes())) {
             return RoutesConstant.LM.getRoutes();
-        } else if (route.contains(RoutesConstant.BL.getRoutes())) {
-            return RoutesConstant.BL.getRoutes();
         } else if (route.contains(RoutesConstant.GA.getRoutes())) {
             return RoutesConstant.GA.getRoutes();
         } else if (route.contains(RoutesConstant.GT.getRoutes())) {
