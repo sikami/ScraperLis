@@ -25,7 +25,7 @@ public class ConnectionScraper {
 
     public List<FerrySchedule> connectLombokFb() {
         try {
-            LombokFbMethods lombokFbMethods = new LombokFbMethods();
+            GeneralMethods generalMethods = new GeneralMethods();
 //
 //
 //            options.addArguments("-headless");
@@ -35,10 +35,10 @@ public class ConnectionScraper {
             search.setStatus("OK");
             webDriver.findElement(By.id("departure_region_id"));
             Select depRegion = new Select(webDriver.findElement(By.id("departure_region_id")));
-            depRegion.selectByValue(lombokFbMethods.findValueLombokFb(search.getFrom()));
+            depRegion.selectByValue(generalMethods.findValueLombokFb(search.getFrom()));
             webDriver.findElement(By.id("arrival_region_id"));
             Select arrivalRegion = new Select(webDriver.findElement(By.id("arrival_region_id")));
-            arrivalRegion.selectByValue(lombokFbMethods.findValueLombokFb(search.getTo()));
+            arrivalRegion.selectByValue(generalMethods.findValueLombokFb(search.getTo()));
 
             //setting departure date
             webDriver.findElement(By.id("departure_date"));
@@ -64,7 +64,7 @@ public class ConnectionScraper {
             //clicking currency
             webDriver.findElement(By.id("currency_id"));
             Select curr = new Select(webDriver.findElement(By.id("currency_id")));
-            curr.selectByValue(lombokFbMethods.findCurrencyLombokFb(search.getCurrency()));
+            curr.selectByValue(generalMethods.findCurrencyLombokFb(search.getCurrency()));
 
             //clicking search button
             webDriver.findElement(By.className("search-button")).click();

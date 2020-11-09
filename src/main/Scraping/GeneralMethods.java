@@ -1,8 +1,8 @@
 import okhttp3.Route;
 
-public class LombokFbMethods {
+public class GeneralMethods {
 
-    public LombokFbMethods() {
+    public GeneralMethods() {
     }
 
     public static String findValueLombokFb(String departure) {
