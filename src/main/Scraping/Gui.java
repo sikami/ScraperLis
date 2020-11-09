@@ -91,7 +91,7 @@ public class Gui extends Application {
         //passenger amount
         Label passengerLabel = new Label("Passenger amount: ");
         ComboBox passList = new ComboBox();
-        passList.getItems().add("1");
+        passList.getItems().addAll("1", "2");
 
 
         //currency
