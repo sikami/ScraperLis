@@ -91,7 +91,7 @@ public class ConnectionScraper {
 
         String url = "/https://gilitransfers.com/fast-boats/get-availability?";
         String departure = "departure_port=" + generalMethods.checkRouteGiliTrf(search.getFrom()) + "&";
-        String arrival = "arrival_port=" + search.getTo() + "&";
+        String arrival = "arrival_port=" + generalMethods.checkRouteGiliTrf(search.getTo()) + "&";
         String departureDate = "departure_date=" + search.getDepDate() + "&";
         String returnDate = "return=" + search.getReturnDate() + "&";
         String adult = "adults=" + search.getPassenger() + "&childs=0&infants=0&";
@@ -110,6 +110,7 @@ public class ConnectionScraper {
 
         try {
             webDriver.get(urlAddress);
+            System.out.println("can get address");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("failed to connect to url");

@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gui extends Application {
@@ -39,6 +40,7 @@ public class Gui extends Application {
 
         ComboBox url = new ComboBox();
         url.getItems().add("https://www.lombokfastboats.com/");
+        url.getItems().add("https://gilitransfers.com/");
 
 
         //website url to scrape
@@ -117,33 +119,39 @@ public class Gui extends Application {
         layoutGeneral.setCenter(result);
 
         //add event listener for result to appear on display
-        searchButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
+        searchButton.setOnAction(actionEvent -> {
 
-                List<FerrySchedule> ferryScheduleList;
-                String routeTo = GeneralMethods.checkRoute((String) routes.getValue());
-                String passengerValue = (String) passList.getValue();
-                String currencyValue = (String) currencyList.getValue();
-                String urlValue = (String) url.getValue();
-                String depart = departText.getText();
+            List<FerrySchedule> ferryScheduleList = new ArrayList<>();
+            String routeTo = GeneralMethods.checkRoute((String) routes.getValue());
+            String passengerValue = (String) passList.getValue();
+            String currencyValue = (String) currencyList.getValue();
+            String urlValue = (String) url.getValue();
+            String depart = departText.getText();
+            String returnDates = returnText.getText();
+            ConnectionScraper connectionScraper = new ConnectionScraper(newSearch);
 
-                if (url.getValue().equals("https://www.lombokfastboats.com/")) {
+            if (url.getValue().equals("https://www.lombokfastboats.com/")) {
 
-                    //enter to Search class need to improve later on to count on amount of letters and whether its all digit
-                    if (returnText.getText().equals("")) {
-                        enterToClass(urlValue, mainlandRoute, routeTo, depart, passengerValue, currencyValue);
-                    } else {
-                        String returnDates = returnText.getText();
-                        enterToClassReturn(urlValue, mainlandRoute, routeTo, depart, returnDates, passengerValue, currencyValue);
-                    }
+                //enter to Search class need to improve later on to count on amount of letters and whether its all digit
+                if (returnText.getText().equals("")) {
+                    enterToClass(urlValue, mainlandRoute, routeTo, depart, passengerValue, currencyValue);
+                } else {
 
-                    ConnectionScraper connectionScraper = new ConnectionScraper(newSearch);
-                    ferryScheduleList = connectionScraper.connectLombokFb();
-                    result.setText(connectionScraper.printResult(ferryScheduleList));
-                    connectionScraper.closeWebDriver();
+                    enterToClassReturn(urlValue, mainlandRoute, routeTo, depart, returnDates, passengerValue, currencyValue);
                 }
+
+
+                ferryScheduleList = connectionScraper.connectLombokFb();
+
+            } else if (url.getValue().equals("https://gilitransfers.com/")) {
+                enterToClassReturn(urlValue, mainlandRoute, routeTo, depart, returnDates, passengerValue, currencyValue);
+                ferryScheduleList = connectionScraper.connectToGiliTrf();
             }
+
+            result.setText(connectionScraper.printResult(ferryScheduleList));
+            connectionScraper.closeWebDriver();
+
+
         });
 
         return layoutGeneral;
