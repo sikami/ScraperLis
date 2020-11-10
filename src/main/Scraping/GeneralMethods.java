@@ -72,6 +72,23 @@ public class GeneralMethods {
         return null;
     }
 
+    //BALI ALLPORT gili transfer, conditional in GUI
+
+    public String checkRouteGiliTrf(String route) {
+
+        if (route.contains(RoutesConstant.NP.getRoutes())) {
+            return RoutesConstant.NP_GiliTransfer.getRoutes();
+        } else if (route.contains(RoutesConstant.NL.getRoutes())) {
+            return RoutesConstant.NL_GiliTransfer.getRoutes();
+        } else if (route.contains(RoutesConstant.GT.getRoutes())) {
+            return RoutesConstant.GT_GiliTransfer.getRoutes();
+        } else if (route.contains(RoutesConstant.GM_GiliTransfer.getRoutes())) {
+            return RoutesConstant.GM_GiliTransfer.getRoutes();
+        } else if (route.contains(RoutesConstant.GA_GiliTransfer.getRoutes())) {
+            return RoutesConstant.GA_GiliTransfer.getRoutes();
+        }
+        return null;
+    }
 
 }
 

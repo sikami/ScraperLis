@@ -14,6 +14,7 @@ public class ConnectionScraper {
     private Search search;
     private List<FerrySchedule> results;
     private WebDriver webDriver;
+    private GeneralMethods generalMethods;
 
     public ConnectionScraper(Search search) {
         this.search = search;
@@ -21,15 +22,14 @@ public class ConnectionScraper {
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("-headless");
         this.webDriver = new FirefoxDriver(options);
+        this.generalMethods = new GeneralMethods();
     }
 
     public List<FerrySchedule> connectLombokFb() {
         try {
-            GeneralMethods generalMethods = new GeneralMethods();
-
             //check if URL is lombok                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             options.addArguments("-headless");
             webDriver.get(search.getUrl());
-            search.setStatus("OK");
+            search.setStatus("OK"); //unnecessary, need review later
             webDriver.findElement(By.id("departure_region_id"));
             Select depRegion = new Select(webDriver.findElement(By.id("departure_region_id")));
             String test = generalMethods.findValueLombokFb(search.getFrom());
@@ -89,7 +89,31 @@ public class ConnectionScraper {
     public List<FerrySchedule> connectToGiliTrf() {
 
 
+        String url = "/https://gilitransfers.com/fast-boats/get-availability?";
+        String departure = "departure_port=" + generalMethods.checkRouteGiliTrf(search.getFrom()) + "&";
+        String arrival = "arrival_port=" + search.getTo() + "&";
+        String departureDate = "departure_date=" + search.getDepDate() + "&";
+        String returnDate = "return=" + search.getReturnDate() + "&";
+        String adult = "adults=" + search.getPassenger() + "&childs=0&infants=0&";
+        String currency = "currency=" + search.getCurrency();
 
+        if (search.getFrom().equals("Bali")) {
+            search.setFrom("BALI_ALL_PORT");
+            departure = "departure_port=" + search.getFrom() + "&";
+        }
+
+        if (search.getReturnDate() == null) {
+            search.setReturnDate("0");
+        }
+
+        String urlAddress = url + departure + arrival + departureDate + returnDate + adult + currency;
+
+        try {
+            webDriver.get(urlAddress);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("failed to connect to url");
+        }
 
 
         return null;
