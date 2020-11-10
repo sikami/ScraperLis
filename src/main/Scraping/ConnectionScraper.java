@@ -89,7 +89,7 @@ public class ConnectionScraper {
     public List<FerrySchedule> connectToGiliTrf() {
 
 
-        String url = "/https://gilitransfers.com/fast-boats/get-availability?";
+        String url = "https://gilitransfers.com/fast-boats/get-availability?";
         String departure = "departure_port=" + generalMethods.checkRouteGiliTrf(search.getFrom()) + "&";
         String arrival = "arrival_port=" + generalMethods.checkRouteGiliTrf(search.getTo()) + "&";
         String departureDate = "departure_date=" + search.getDepDate() + "&";
@@ -102,8 +102,9 @@ public class ConnectionScraper {
             departure = "departure_port=" + search.getFrom() + "&";
         }
 
-        if (search.getReturnDate() == null) {
+        if (search.getReturnDate().equals("")) {
             search.setReturnDate("0");
+            returnDate = "return=" + search.getReturnDate() + "&";
         }
 
         String urlAddress = url + departure + arrival + departureDate + returnDate + adult + currency;

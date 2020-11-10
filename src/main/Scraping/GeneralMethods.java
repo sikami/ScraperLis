@@ -82,9 +82,9 @@ public class GeneralMethods {
             return RoutesConstant.NL_GiliTransfer.getRoutes();
         } else if (route.contains(RoutesConstant.GT.getRoutes())) {
             return RoutesConstant.GT_GiliTransfer.getRoutes();
-        } else if (route.contains(RoutesConstant.GM_GiliTransfer.getRoutes())) {
+        } else if (route.contains(RoutesConstant.GM.getRoutes())) {
             return RoutesConstant.GM_GiliTransfer.getRoutes();
-        } else if (route.contains(RoutesConstant.GA_GiliTransfer.getRoutes())) {
+        } else if (route.contains(RoutesConstant.GA.getRoutes())) {
             return RoutesConstant.GA_GiliTransfer.getRoutes();
         }
         return null;
