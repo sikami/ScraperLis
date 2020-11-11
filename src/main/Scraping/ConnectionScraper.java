@@ -112,11 +112,23 @@ public class ConnectionScraper {
         try {
             webDriver.get(urlAddress);
             System.out.println("can get address");
+
+            List<WebElement> boatTitle = webDriver.findElements(By.xpath("//*[@class='mat-card-header-text']"));
+
+            //price : h5.text-center.text-orange.mb-0.price
+            //boattitle : mat-card-title.mat-card-title
+            //time: h6.mb-0
+            //route: mat-card-subtitle.mat-card-subtitle.mb-1
+            //route: div.mat-card-header-text
+            this.results = putIntoClass(boatTitle, null, null, null);
+            return this.results;
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("failed to connect to url");
         }
 
+        //mat-card-header-text
 
         return null;
 
