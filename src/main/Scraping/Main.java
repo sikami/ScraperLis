@@ -8,13 +8,13 @@ import static javafx.application.Application.launch;
 
 public class Main {
     public static void main(String[] args) {
-        Search firstSearch = new Search("https://www.lombokfastboats.com/", "Bali", "Gili Air", "2020-11-20", "1", "IDR");
-        ConnectionScraper scraper = new ConnectionScraper(firstSearch);
-        List<FerrySchedule> listAll = scraper.connectToGiliTrf();
-
-        System.out.println(listAll.size());
-        scraper.closeWebDriver();
-    //    launch(Gui.class);
+//        Search firstSearch = new Search("https://www.lombokfastboats.com/", "Bali", "Gili Air", "2020-11-20", "1", "IDR");
+//        ConnectionScraper scraper = new ConnectionScraper(firstSearch);
+//        List<FerrySchedule> listAll = scraper.connectToGiliTrf();
+//
+//        System.out.println(listAll.size());
+//        scraper.closeWebDriver();
+        launch(Gui.class);
 
     }
 }
