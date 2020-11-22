@@ -5,7 +5,7 @@
 <br>
 <p>The Gui looks like this:</p>
 <br>
-![scraper](scraper.png)
+![myscraper](scraper.png)
 
 <br>
 <h2> FUTURE PROJECT </h2>
