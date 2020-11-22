@@ -5,7 +5,7 @@
 <br>
 <p>The Gui looks like this:</p>
 <br>
-![myscraper](scraper.png)
+![myscraper](https://github.com/sikami/ScraperLis/blob/master/scraper.png)
 
 <br>
 <h2> FUTURE PROJECT </h2>
