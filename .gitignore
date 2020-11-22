@@ -1,0 +1,10 @@
+# Ignore target
+/home/listya/Documents/Belajar/JAVA/personalProject/WebScraping/target/
+
+
+# ignore iml
+*.iml
+
+# ignore idea
+/home/listya/Documents/Belajar/JAVA/personalProject/WebScraping/.idea/
+
