@@ -5,6 +5,7 @@
 <br>
 <p>The Gui looks like this:</p>
 <br>
+
 ![myscraper](scraper.png)
 
 <br>
